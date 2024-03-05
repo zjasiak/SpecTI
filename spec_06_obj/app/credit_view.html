@@ -1,0 +1,55 @@
+{extends file="../templates/main.html"}
+
+{block name=content}
+
+<h1 class="w3-xxlarge w3-text-red"><b>Oblicz swój kredyt.</b></h1>
+<hr style="width:50px;border:5px solid red" class="w3-round">
+   
+<form action="{$app_url}/app/credit.php" method="post">
+    <div class="w3-section">
+        <label for="kwota">Kwota (zł): </label>
+            <input class="w3-input w3-border" id="kwota" type="text" name="kwota" value="{$form['kwota']}" /><br />
+    </div>
+    <div class="w3-section">
+        <label for="procent">Oprocentowanie (%): </label>
+            <input class="w3-input w3-border" id="procent" type="text" name="procent" value="{$form['procent']}" /><br />
+    </div>
+    <div class="w3-section">
+        <label for="okres">Okres (lata): </label>
+            <input class="w3-input w3-border" id="okres" type="number" name="okres" value="{$form['okres']}" /><br />
+    </div>
+        <input class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom" type="submit" value="Oblicz" />
+</form>	
+  
+{if $msgs->isError()}
+      <ol style="padding: 10px 10px 10px 30px; border-radius: 5px; background-color: #f88; width:300px;">
+	{foreach $msgs->getErrors() as $err}
+	{strip}
+		<li>{$err}</li>
+	{/strip}
+	{/foreach}
+	</ol>
+{/if}
+
+{if $msgs->isInfo()}
+
+	<ol style="padding: 10px 10px 10px 30px; border-radius: 5px; background-color: #FADA5E; width:300px;">
+	{foreach $msgs->getInfos() as $inf}
+	{strip}
+		<li>{$inf}</li>
+	{/strip}
+	{/foreach}
+	</ol>
+{/if}
+
+{if isset($res->result)}
+    <div class="message"style="margin: 20px; padding: 10px; border-radius: 5px; background-color: #0f0; width:300px;">
+        <span>Miesięczna rata kredytu wyniesie: {$res->result|string_format:"%.2f"} zł.</span>
+    </div>
+{/if}
+
+{/block}
+
+{block name=footer}
+    <p>Kontakt: credit@calc.pl</p>
+{/block}

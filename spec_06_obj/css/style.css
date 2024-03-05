@@ -1,0 +1,40 @@
+body,h1,h2,h3,h4,h5 { font-family: "Poppins", sans-serif; }
+
+body { font-size:16px; }
+
+.w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding {
+    z-index:3;
+    width:300px;
+    font-weight:bold;
+}
+
+.w3-main {
+    margin-left:340px;
+    margin-right:40px;
+}
+
+header {
+    margin-top:80px;
+}
+
+hr {
+    width:50px;
+    border:5px solid red;
+}
+
+#kalkulator {
+    margin-top:75px;
+}
+
+.footer {
+    margin-top:75px;
+    padding-right:58px;
+}
+
+.message {
+    margin: 20px; 
+    padding: 10px; 
+    border-radius: 5px; 
+    background-color: #0f0; 
+    width:300px;
+}
